@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактировать партнера</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Редактировать партнера</h1>
+
+    <form action="{{ url_for('edit_partner_form', partner_id=partner['PartnerID']) }}" method="POST">
+        <label for="name">Наименование:</label>
+        <input type="text" id="name" name="name" value="{{ partner['Name'] }}" required><br>
+
+        <label for="type">Тип партнера:</label>
+        <select id="type" name="type" required>
+            <option value="Клиент" {% if partner['Type'] == 'Клиент' %}selected{% endif %}>Клиент</option>
+            <option value="Поставщик" {% if partner['Type'] == 'Поставщик' %}selected{% endif %}>Поставщик</option>
+            <option value="Дистрибьютор" {% if partner['Type'] == 'Дистрибьютор' %}selected{% endif %}>Дистрибьютор</option>
+        </select><br>
+
+        <label for="rating">Рейтинг:</label>
+        <input type="number" id="rating" name="rating" value="{{ partner['Rating'] }}" min="0" required><br>
+
+        <label for="address">Адрес:</label>
+        <input type="text" id="address" name="address" value="{{ partner['Address'] }}"><br>
+
+        <label for="director_name">ФИО директора:</label>
+        <input type="text" id="director_name" name="director_name" value="{{ partner['DirectorName'] }}"><br>
+
+        <label for="phone">Телефон:</label>
+        <input type="text" id="phone" name="phone" value="{{ partner['Phone'] }}"><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ partner['Email'] }}"><br>
+
+        <button type="submit">Сохранить</button>
+        <a href="{{ url_for('index') }}">Назад</a>
+    </form>
+</body>
+</html>

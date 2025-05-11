@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить партнера</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Добавить партнера</h1>
+
+    <form action="{{ url_for('add_partner_form') }}" method="POST">
+        <label for="name">Наименование:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="type">Тип партнера:</label>
+        <select id="type" name="type" required>
+            <option value="Клиент">Клиент</option>
+            <option value="Поставщик">Поставщик</option>
+            <option value="Дистрибьютор">Дистрибьютор</option>
+        </select><br>
+
+        <label for="rating">Рейтинг:</label>
+        <input type="number" id="rating" name="rating" min="0" required><br>
+
+        <label for="address">Адрес:</label>
+        <input type="text" id="address" name="address"><br>
+
+        <label for="director_name">ФИО директора:</label>
+        <input type="text" id="director_name" name="director_name"><br>
+
+        <label for="phone">Телефон:</label>
+        <input type="text" id="phone" name="phone"><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br>
+
+        <button type="submit">Сохранить</button>
+        <a href="{{ url_for('index') }}">Назад</a>
+    </form>
+</body>
+</html>
